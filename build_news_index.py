@@ -5,17 +5,18 @@ es = Elasticsearch("http://localhost:9200")
 index_name = 'news'
 
 # Define dummy data with 'path' and 'text' fields
+# Paths now have at least 2 components for compatibility with ExtractData.py
 documents = [
-    {"path": "doc1.txt", "text": "The government announced a new budget for the upcoming year."},
-    {"path": "doc2.txt", "text": "Sports fans are excited about the football finals this weekend."},
-    {"path": "doc3.txt", "text": "The stock market saw a significant rise in technology shares."},
-    {"path": "doc4.txt", "text": "Local elections are being held to decide the new mayor."},
-    {"path": "doc5.txt", "text": "A new technology startup is revolutionizing the way we use AI."},
-    {"path": "doc6.txt", "text": "The weather forecast predicts heavy rain and storms for the coast."},
-    {"path": "doc7.txt", "text": "International trade agreements were signed by the two countries."},
-    {"path": "doc8.txt", "text": "The championship match ended in a draw after overtime."},
-    {"path": "doc9.txt", "text": "Scientists have discovered a new species in the deep ocean."},
-    {"path": "doc10.txt", "text": "Education reforms are necessary to improve student performance."}
+    {"path": "politics/doc1.txt", "text": "The government announced a new budget for the upcoming year."},
+    {"path": "sports/doc2.txt", "text": "Sports fans are excited about the football finals this weekend."},
+    {"path": "business/doc3.txt", "text": "The stock market saw a significant rise in technology shares."},
+    {"path": "politics/doc4.txt", "text": "Local elections are being held to decide the new mayor."},
+    {"path": "technology/doc5.txt", "text": "A new technology startup is revolutionizing the way we use AI."},
+    {"path": "weather/doc6.txt", "text": "The weather forecast predicts heavy rain and storms for the coast."},
+    {"path": "politics/doc7.txt", "text": "International trade agreements were signed by the two countries."},
+    {"path": "sports/doc8.txt", "text": "The championship match ended in a draw after overtime."},
+    {"path": "science/doc9.txt", "text": "Scientists have discovered a new species in the deep ocean."},
+    {"path": "education/doc10.txt", "text": "Education reforms are necessary to improve student performance."}
 ]
 
 def generate_actions():

@@ -40,7 +40,7 @@ if __name__ == '__main__':
     numwords = args.numwords
 
     try:
-        client = Elasticsearch(timeout=1000)
+        client = Elasticsearch("http://localhost:9200", timeout=1000)
         voc = {}  # global vocabulary frequency
         docterms = {}  # document vocabulary
         print('Querying all documents ...')

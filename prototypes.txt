@@ -1,0 +1,2 @@
+CLASS0:agreements+1.0 by+1.0 countries+1.0 international+1.0 signed+1.0 trade+1.0 two+1.0 were+1.0 
+CLASS1:about+1.0 excited+1.0 fans+1.0 finals+1.0 football+1.0 sports+1.0 this+1.0 weekend+1.0 

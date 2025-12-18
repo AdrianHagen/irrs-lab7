@@ -1,0 +1,10 @@
+politics/doc1.txt: announced budget for government upcoming year
+sports/doc2.txt: about excited fans finals football sports this weekend
+business/doc3.txt: market rise saw shares significant stock technology
+politics/doc4.txt: being decide elections held local mayor to
+technology/doc5.txt: ai is revolutionizing startup technology use way we
+weather/doc6.txt: and coast for forecast heavy predicts rain storms weather
+politics/doc7.txt: agreements by countries international signed trade two were
+sports/doc8.txt: after championship draw ended match overtime
+science/doc9.txt: deep discovered have ocean scientists species
+education/doc10.txt: education improve necessary performance reforms student to
