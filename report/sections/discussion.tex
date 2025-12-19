@@ -1,0 +1,13 @@
+The results demonstrate the high impact of vocabulary pruning on cluster
+quality. Initially, using default parameters resulted in
+clusters dominated by common terms like ``the'' and ``is.'' By restricting
+the maximum frequency to 20\%, we successfully isolated technical vocabularies
+that closely align with the original ArXiv folder structure.
+
+However, CLASS0 remained a ``generic'' cluster, containing terms like
+``how'' and ``understand.'' This indicates that even with frequency
+filtering, some high-frequency research-meta terms persist and can
+dilute cluster purity. Regarding performance, the lack of a
+linear speed-up when using multiple cores is explained by the overhead
+of inter-process communication in a local simulation and the hardware-induced
+frequency scaling observed during the mid-iterations.

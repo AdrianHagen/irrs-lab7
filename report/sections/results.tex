@@ -1,0 +1,41 @@
+The algorithm was executed for 20 iterations using four parallel processes
+(\texttt{--ncores 4}). The final prototypes exhibited clear thematic
+specialisation.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Cluster} & \textbf{Top Attributes (Stemmed)} & \textbf{Inferred Topic} & \textbf{Inferred source}\\
+\midrule
+CLASS0 & how , inform, import, understand, understand & General Research & --\\
+CLASS1 & equat, theori, solut, deriv, space & Mathematics & \texttt{math.update/hep-th}]\\
+CLASS2 & quantum, phase, physic, experiment, transit & Quantum Physics & \texttt{quant-ph/cond-mat}\\
+CLASS3 & increas, temperatur, investig, valu, found & Thermodynamics & \texttt{cond-mat}\\
+CLASS4 & prove, ani, given, bound, some, known & Theoretical CS/Math & \texttt{cs.updates/math}\\
+CLASS5 & learn, network, train, deep, dataset & Machine Learning & \texttt{cs.updates}\\
+CLASS6 & mass, star, galaxi, stellar, emiss & Astrophysics & \texttt{astro-ph}\\
+CLASS7 & optim, effici, bound, linear, complex & Optimisation & \texttt{cs.updates}\\
+\bottomrule
+\end{tabular}
+\caption{Top attributes and thematic labels for selected clusters.}
+\end{table}
+
+The computational performance showed significant variance across iterations.
+While the first iteration took 2.88 seconds, subsequent iterations' execution times
+steadily increased from 2.88 seconds to a maximum of 11.99 seconds.
+
+This increase is attributed to thermal throttling on the
+host hardware, which lacked active cooling and reached temperatures in excess
+of 100°C during the workload.
+
+\input{img/time_per_iteration}
+
+As illustrated in Fig.~\ref{fig:time_per_iteration}, the execution time per iteration did not follow the
+expected pattern of initial overhead followed by stability.
+Instead, a sharp increase in running time was observed starting at Iteration 2,
+coinciding with the CPU reaching its thermal limit of 100--101°C.
+The computation time steadily increases as the primary cooling thermal mass
+(laptop's cooling chamber) is saturated, but the secondary thermal mass
+(laptop chassis) begins to absorb heat, leading to a further gradual performance
+degradation as the CPU increasingly throttles further to manage temperature.
