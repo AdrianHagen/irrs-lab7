@@ -7,6 +7,14 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=1.18}
 
 \begin{document}
 
@@ -20,30 +28,28 @@
     \large{\textbf{Report}}\\[2cm]
     \textbf{Date:} December 24, 2025\\[1cm]
     \textbf{Students:}\\
-    Dani ...\\
+    Daniel Wero\'nski Falc\'o \\
     Adrian Hagen\\
 \end{center}
 \newpage
 
 % Section scaffold
 \section{Introduction}
-
-% ...existing code...
+\input{sections/introduction}
 
 \section{Methodology}
-
-% ...existing code...
+\input{sections/methodology}
 
 \section{Results}
+\input{sections/results}
 
-% ...existing code...
 
 \section{Discussion}
-
-% ...existing code...
+\input{sections/discussion}
 
 \section{Conclusion}
+\input{sections/conclusions}
 
-% ...existing code...
+
 
 \end{document}
