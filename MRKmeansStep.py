@@ -17,6 +17,7 @@ MRKmeansDef
 
 """
 
+from collections import defaultdict
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 
@@ -28,14 +29,39 @@ class MRKmeansStep(MRJob):
 
     def jaccard(self, prot, doc):
         """
-        Compute here the Jaccard similarity between  a prototype and a document
+        Compute here the Jaccard similarity between a prototype and a document
         prot should be a list of pairs (word, probability)
         doc should be a list of words
         Words must be alphabeticaly ordered
 
         The result should be always a value in the range [0,1]
         """
-        return 1
+        doc_norm_sq = float(len(doc))
+
+        prot_norm_sq = sum([val ** 2 for _, val in prot])
+
+        dot_product = 0.0
+        i = 0
+        j = 0
+        while i < len(prot) and j < len(doc):
+            prot_word = prot[i][0]
+            prot_val = prot[i][1]
+            doc_word = doc[j]
+
+            if prot_word == doc_word:
+                dot_product += prot_val  # Weighted intersection
+                i += 1
+                j += 1
+            elif prot_word < doc_word:
+                i += 1
+            else:
+                j += 1
+
+        denominator = doc_norm_sq + prot_norm_sq - dot_product
+
+        if denominator == 0:
+            return 0.0
+        return dot_product / denominator
 
     def configure_args(self):
         """
@@ -75,12 +101,18 @@ class MRKmeansStep(MRJob):
         doc, words = line.split(':')
         lwords = words.split()
 
-        #
-        # Compute map here
-        #
+        # Compute map
+        best_cluster = None
+        best_sim = -1.0
+        for cluster in self.prototypes:
+            sim = self.jaccard(self.prototypes[cluster], lwords)
+            if sim > best_sim:
+                best_sim = sim
+                best_cluster = cluster
+        # Yield the best cluster and the document words
+        yield best_cluster, lwords
 
-        # Return pair key, value
-        yield None, None
+
 
     def aggregate_prototype(self, key, values):
         """
@@ -95,12 +127,27 @@ class MRKmeansStep(MRJob):
         Words are ordered alphabetically but you will have to use an efficient structure to
         compute the frequency of each word
 
-        :param key:
-        :param values:
-        :return:
+        :param key: cluster id
+        :param values: list of documents assigned to the cluster
+        :return: cluster id and new prototype
         """
 
-        yield None, None
+        word_count = defaultdict(int)
+        doc_count = 0
+
+        for doc_words in values:
+            doc_count += 1
+            for word in doc_words:
+                word_count[word] += 1
+
+        # Create new prototype as a sorted list of (word, frequency/doc_count)
+        new_prototype = []
+        for word in sorted(word_count.keys()):
+            frequency = word_count[word] / float(doc_count)
+            new_prototype.append(f"{word}+{frequency:.6f}")
+
+        yield key, ' '.join(new_prototype)
+
 
     def steps(self):
         return [MRStep(mapper_init=self.load_data, mapper=self.assign_prototype,
