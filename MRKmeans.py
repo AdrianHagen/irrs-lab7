@@ -1,7 +1,7 @@
 """
 .. module:: MRKmeans
 
-MRKmeans
+MRfmeans
 *************
 
 :Description: MRKmeans
@@ -41,6 +41,8 @@ if __name__ == '__main__':
     shutil.copy(cwd + '/' + args.prot, cwd + '/prototypes0.txt')
 
     nomove = False  # Stores if there has been changes in the current iteration
+    last_prototype = None
+
     for i in range(args.iter):
         tinit = time.time()  # For timing the iterations
 
@@ -56,19 +58,24 @@ if __name__ == '__main__':
         # Runs the script
         with mr_job1.make_runner() as runner1:
             runner1.run()
-            new_assign = {}
             new_proto = {}
+
             # Process the results of the script iterating the (key,value) pairs
             for key, value in mr_job1.parse_output(runner1.cat_output()):
                 # You should store things here probably in a datastructure
+                new_proto[key] = value
 
-            # If your scripts returns the new assignments you could write them in a file here
+            if new_proto == last_prototype:
+                nomve = True
+            else:
+                last_prototype = new_proto
 
-            # You should store the new prototypes here for the next iteration
+            with open(cwd + '/prototypes%d.txt' % (i + 1), 'w') as fnext:
+                for cluster, prototype_str in sorted(new_proto.items()):
+                    fnext.write(f"{cluster}:{prototype_str}\n")
 
-            # If you have saved the assignments, you can check if they have changed from the previous iteration
 
-        print(f"Time= {(time.time() - tinit)} seconds" % )
+        print(f"Time= {(time.time() - tinit)} seconds")
 
         if nomove:  # If there is no changes in two consecutive iteration we can stop
             print("Algorithm converged")
