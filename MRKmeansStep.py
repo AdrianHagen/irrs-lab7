@@ -110,7 +110,7 @@ class MRKmeansStep(MRJob):
                 best_sim = sim
                 best_cluster = cluster
         # Yield the best cluster and the document words
-        yield best_cluster, lwords
+        yield best_cluster, (doc, lwords)
 
 
 
@@ -135,7 +135,7 @@ class MRKmeansStep(MRJob):
         word_count = defaultdict(int)
         doc_count = 0
 
-        for doc_words in values:
+        for doc_path, doc_words in values:
             doc_count += 1
             for word in doc_words:
                 word_count[word] += 1
