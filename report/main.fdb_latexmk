@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1766227186.48884 "/Users/i551965/Documents/dev/Uni/IRRS-lab7/report/main.tex" "main.pdf" "main" 1766227187.4451 0
-  "/Users/i551965/Documents/dev/Uni/IRRS-lab7/report/main.tex" 1766221426.48002 987 aaf1769c58d367cff6750043cb876361 ""
+["pdflatex"] 1766229722.44259 "/Users/i551965/Documents/dev/Uni/IRRS-lab7/report/main.tex" "main.pdf" "main" 1766229723.39354 0
+  "/Users/i551965/Documents/dev/Uni/IRRS-lab7/report/main.tex" 1766227192.82857 987 aaf1769c58d367cff6750043cb876361 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc" 1202520719 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -211,14 +211,14 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1718959029 8221428 e61d9e27a524d821e981dc8c6a12e12a ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "img/time_per_iteration.tex" 1766227135.34348 975 7136725a51edf835fe6dcf002e728e25 ""
-  "main.aux" 1766227187.34474 1463 737b2e53de97b12c4b58884d079b926b "pdflatex"
-  "main.out" 1766227187.3483 465 1b9fa6ab19b90f9eed2a28f1d3455155 "pdflatex"
-  "main.tex" 1766221426.48002 987 aaf1769c58d367cff6750043cb876361 ""
+  "main.aux" 1766229723.30258 1463 737b2e53de97b12c4b58884d079b926b "pdflatex"
+  "main.out" 1766229723.30451 465 1b9fa6ab19b90f9eed2a28f1d3455155 "pdflatex"
+  "main.tex" 1766227192.82857 987 aaf1769c58d367cff6750043cb876361 ""
   "sections/conclusions.tex" 1766221426.48022 565 edc8621046afbe47acd70c61a7fb0f0f ""
   "sections/discussion.tex" 1766221426.48038 813 8d547e37aa16149054899cde8ac51451 ""
   "sections/introduction.tex" 1766221426.48053 622 18f685ae671aad3110edb2d8a7c0122a ""
   "sections/methodology.tex" 1766221426.48077 1494 0179b985d684852761180aa14fefe36f ""
-  "sections/results.tex" 1766227185.2775 3391 579f193236df24be4c598244e9b04da9 ""
+  "sections/results.tex" 1766229721.21613 3187 861138e9ff3593dc764acb51a431b9d5 ""
   (generated)
   "main.aux"
   "main.log"
