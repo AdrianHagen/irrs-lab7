@@ -4,7 +4,7 @@ specialisation.
 
 \begin{table}[h!]
 \centering
-\begin{tabular}{lll}
+\begin{tabular}{llll}
 \toprule
 \textbf{Cluster} & \textbf{Top Attributes (Stemmed)} & \textbf{Inferred Topic} & \textbf{Inferred source}\\
 \midrule
@@ -22,10 +22,16 @@ CLASS7 & optim, effici, bound, linear, complex & Optimisation & \texttt{cs.updat
 \end{table}
 
 The computational performance showed significant variance across iterations.
-While the first iteration took 2.88 seconds, subsequent iterations' execution times
-steadily increased from 2.88 seconds to a maximum of 11.99 seconds.
+While the first iteration took only 2.88 seconds, the second one already took more than 8 seconds and subsequent iterations' execution times
+steadily increased to a maximum of 11.99 seconds.
 
-This increase is attributed to thermal throttling on the
+The sharp increase in running time from the first to the second iteration is primarily due to the algorithm's initialization. Initially, prototypes are single documents chosen at random. These are "sparse," containing only a small subset of the vocabulary, which makes the initial Jaccard similarity computations in the mapper highly efficient.
+
+In subsequent iterations, the "Maximization" step recomputes each prototype as the average of all documents in its cluster. This creates "dense" prototypes containing a much larger variety of tokens and real-number frequencies. Comparing a document against these dense probability distributions requires significantly more computations of the Jaccard Similarity.
+
+This complexity growth follows a power law consistent with Heaps' Law, which states that the rate of discovering new words decreases as the total amount of text increases. While the prototypes rapidly gain complexity during early iterations as they "absorb" the cluster's vocabulary, the rate of growth slows down as they saturate the 250-word vocabulary, eventually leading to more stable computation times.
+
+Another reason for this increase can be attributed to thermal throttling on the
 host hardware, which lacked active cooling and reached temperatures in excess
 of 100°C during the workload.
 
